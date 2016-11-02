@@ -14,7 +14,9 @@ module.exports = function create () {
   var videoSize
 
   var defaultConstraints = {
-    audio: false,
+    audio: {
+      mandatory: { chromeMediaSource: "system" }
+    },
     video: {
       mandatory: {
         chromeMediaSource: 'screen',
