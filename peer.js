@@ -4,18 +4,20 @@ var events = require('events')
 var SimplePeer = require('simple-peer')
 var nets = require('nets')
 var getUserMedia = require('./get-user-media.js')()
+var config = require('./package.json').config;
 
 module.exports = function create () {
-  var server = 'http://catlobby.maxogden.com'
-  // var server = 'http://localhost:5005'
-  var remoteConfigUrl = 'https://instant.io/rtcConfig'
-  if (process.browser) remoteConfigUrl = 'http://cors.maxogden.com/' + remoteConfigUrl
+  var server = config.server
+  var remoteConfigUrl = config.rtcConfigUrl
+  if (process.browser) remoteConfigUrl = config.browser + '/' + remoteConfigUrl
 
   var videoSize
 
   var defaultConstraints = {
     audio: {
-      mandatory: { chromeMediaSource: "system" }
+      mandatory: {
+        chromeMediaSource: "system",
+      }
     },
     video: {
       mandatory: {

@@ -5,6 +5,8 @@
   "main": "electron.js",
   "scripts": {
     "start": "electron electron.js",
+    "win-start": "electron.cmd electron.js",
+    "win-build": "electron-packager . ScreenCat --platform=win32 --arch=x64 --version=0.36.0 --protocol-name=\"ScreenCat URL\" --protocol=\"screencat\" --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore=node_modules/browserify --ignore=node_modules/wzrd --ignore=node_modules/standard",
     "build": "electron-packager . ScreenCat --platform=darwin --arch=x64 --version=0.36.0 --protocol-name=\"ScreenCat URL\" --protocol=\"screencat\" --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore=node_modules/browserify --ignore=node_modules/wzrd --ignore=node_modules/standard && cp img/Icon.icns ScreenCat.app/Contents/Resources/atom.icns",
     "css": "node-sass stylesheets/sass/screencat.scss stylesheets/css/screencat.css --watch",
     "test": "standard",
@@ -26,6 +28,7 @@
   },
   "devDependencies": {
     "browserify": "^9.0.3",
+    "cat-lobby": "git://github.com/maxogden/cat-lobby.git",
     "electron-packager": "^4.1.0",
     "electron-prebuilt": "^0.36.0",
     "node-sass": "^3.4.1",
@@ -40,5 +43,10 @@
   "bugs": {
     "url": "https://github.com/maxogden/screencat/issues"
   },
-  "homepage": "https://github.com/maxogden/screencat"
+  "homepage": "https://github.com/maxogden/screencat",
+  "config": {
+    "server": "http://catlobby.maxogden.com",
+    "rtcConfigUrl": "https://instant.io/rtcConfig",
+    "browser": "http://cors.maxogden.com"
+  }
 }
