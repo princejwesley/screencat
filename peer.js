@@ -162,7 +162,7 @@ module.exports = function create () {
         // screensharing
         getUserMedia(constraints, function (videoStream) {
           // audio
-          getUserMedia({audio: true, video: false}, function (audioStream) {
+          getUserMedia({audio: constraints.audio ? constraints.audio : true, video: false}, function (audioStream) {
             peer = new SimplePeer({ initiator: true, trickle: false, config: config })
             peer._pc.addStream(videoStream)
             peer._pc.addStream(audioStream)
